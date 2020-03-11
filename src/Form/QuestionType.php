@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Question;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -31,25 +32,27 @@ class QuestionType extends AbstractType
                 'data' => $options['user'] ? $options['user']->getEmail() : null
             ])
             ->add('question', null)
-            ->add('body', TextareaType::class, [
-                'required' => false,
-                'attr' => [
-                    'rows' => 5
+            ->add('body', CKEditorType::class, [
+                'config' => [
+                    'uiColor' => "#e2e2e2",
+                    'toolbar' => "basic",
+                    'required' => true
                 ],
-                'label' => 'Body(Optional)'
+                'label' => 'Text'
             ])
-            ->add('brochure', FileType::class, [
-                'label' => 'Brochure (PDF file)',
+            ->add('picture', FileType::class, [
+                'label' => 'Image',
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
                     new File([
-                        'maxSize' => '1024m',
+                        'maxSize' => '5024m',
                         'mimeTypes' => [
-                            'application/pdf',
-                            'application/x-pdf',
+                            'image/jpeg',
+                            'image/png',
+                            'image/jpg'
                         ],
-                        'mimeTypesMessage' => 'Please upload a valid PDF document',
+                        'mimeTypesMessage' => 'Please upload a valid image(jpeg, png, jpg)',
                     ])
                 ],
             ])

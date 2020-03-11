@@ -12,9 +12,9 @@ use App\Entity\Question;
 class MainController extends AbstractController
 {
     /**
-     * @Route("/", name="main")
+     * @Route("/", name="app_main")
      */
-    public function index(QuestionRepository $questionRepository, Request $re                                                           quest, PaginatorInterface $paginator)
+    public function index(QuestionRepository $questionRepository, Request $request, PaginatorInterface $paginator)
     {
         $em = $this->getDoctrine()->getManager();
         $questionsEntity = $em->getRepository(Question::class)->findBy([], ['created' => 'DESC']);

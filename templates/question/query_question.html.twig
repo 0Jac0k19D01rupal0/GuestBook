@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Searching results{% endblock %}
+
+{% block body %}
+    {% for question in questions %}
+        <div class="media text-muted pt-3">
+            <p class="media-body pb-3 mb-0 big lh-125 border-bottom border-gray">
+                <a href="{{ path('question_show', {id: question.id}) }}">{{ question.question }}</a><
+                {{ question.body | slice(0, 255) ~ '...'  }}
+            </p>
+        </div>
+    {% endfor %}
+    <small class="d-block text-right mt-3">
+        <a href="{{ path('app_main') }}">Main</a>
+    </small>
+{% endblock %}

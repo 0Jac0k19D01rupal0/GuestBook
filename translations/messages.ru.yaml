@@ -1,0 +1,41 @@
+send.message.success: Успешно! Проверьте почту.
+email: Введите вашу ел. почту
+buttons.send_to_mail: Отправить
+auth.new_password_title: Сброс пароля
+pages.sort_by: Сортировать
+forms.sort_date: за датой
+forms.sort_username: за именем
+forms.sort_email: за ел. почтой
+Repeat Password: Подтвердите пароль
+buttons.new_password: Отправить
+reset.password.success: Пароль изменен!
+send.message.error: Ошибка отправки!!
+Question/Answer: Вопрос/Ответ
+Questions: Вопросы
+Sign Up: Зарегистрироватся
+Log Out: Выйти
+Ask Question: Задать Вопрос
+Your Answer: Ваш Ответ
+Post Answer: Отправить
+Username: Имя
+Text: Текст
+Question: Вопрос
+Image: Изображення
+Submit: Отправить
+Log In: Авторизоватся
+Log In!: Авторизация
+Search: Поиск
+answers: ответы
+views: просмотры
+asked by: спросил
+Email: Эл. адрес
+Password: Пароль
+Register: Регистрация
+Confirm Password: Подтвердите Пароль
+Answers: Ответы
+Searching results: Результаты поиска
+Delete: Удалить
+Edit: Редактировать
+No questions posted!: Нет вопросов!
+See question: Просмотр вопросов
+No answer posted!: Нет отправленых ответов!

@@ -14,6 +14,7 @@ class AnswerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
         $builder
             ->add('body', TextareaType::class, [
                 'constraints' => [
@@ -24,6 +25,7 @@ class AnswerType extends AbstractType
                 'label' => 'Your Answer'
             ])
             ->add('submit', SubmitType::class, [
+
                 'label' => 'Post Answer'
             ])
         ;

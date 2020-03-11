@@ -7,9 +7,13 @@
         "ext-iconv": "*",
         "ext-intl": "*",
         "captcha-com/symfony-captcha-bundle": "^4.2",
+        "friendsofsymfony/ckeditor-bundle": "^2.2",
         "friendsofsymfony/user-bundle": "~2.0",
+        "fzaninotto/faker": "^1.9",
         "knplabs/knp-paginator-bundle": "^5.1",
         "sensio/framework-extra-bundle": "^5.1",
+        "sonata-project/admin-bundle": "^3.61",
+        "sonata-project/doctrine-orm-admin-bundle": "^3.14",
         "symfony/asset": "4.4.*",
         "symfony/console": "4.4.*",
         "symfony/dotenv": "4.4.*",
@@ -25,20 +29,22 @@
         "symfony/process": "4.4.*",
         "symfony/security-bundle": "4.4.*",
         "symfony/serializer-pack": "*",
+        "symfony/swiftmailer-bundle": "^3.4",
         "symfony/translation": "4.4.*",
         "symfony/twig-pack": "*",
         "symfony/validator": "4.4.*",
         "symfony/web-link": "4.4.*",
-        "symfony/web-server-bundle": "4.4",
         "symfony/webpack-encore-bundle": "^1.7",
         "symfony/yaml": "4.4.*",
         "vich/uploader-bundle": "^1.13"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.3",
         "symfony/debug-pack": "^1.0",
         "symfony/maker-bundle": "^1.14",
         "symfony/profiler-pack": "*",
-        "symfony/test-pack": "*"
+        "symfony/test-pack": "*",
+        "symfony/web-server-bundle": "4.4.*"
     },
     "config": {
         "preferred-install": {

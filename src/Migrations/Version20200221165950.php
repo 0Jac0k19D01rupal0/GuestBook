@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200205203241 extends AbstractMigration
+final class Version20200221165950 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,8 +22,7 @@ final class Version20200205203241 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('DROP INDEX UNIQ_B6F7494EF85E0677 ON question');
-        $this->addSql('DROP INDEX UNIQ_B6F7494EE7927C74 ON question');
+        $this->addSql('ALTER TABLE user ADD reset_password_token VARCHAR(255) DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -31,7 +30,6 @@ final class Version20200205203241 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_B6F7494EF85E0677 ON question (username)');
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_B6F7494EE7927C74 ON question (email)');
+        $this->addSql('ALTER TABLE user DROP reset_password_token');
     }
 }

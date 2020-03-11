@@ -12,7 +12,7 @@ security:
         property: email
   firewalls:
     dev:
-      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      pattern: ^/(_(profiler|wdt)|css|img|js)/
       security: false
     main:
       anonymous: true
@@ -20,7 +20,8 @@ security:
         authenticators:
           - App\Security\LoginFormAuthenticator
       logout:
-        path: fos_user_security_logout
+        path: /logout
+        target: app_main
 
       # activate different ways to authenticate
 

@@ -1,0 +1,41 @@
+send.message.success: Успішно! Перевірте пошту.
+email: Уведіть вашу ел. пошту
+buttons.send_to_mail: Відправити
+auth.new_password_title: Зброс паролю
+pages.sort_by: Сортувати
+forms.sort_date: за датою
+forms.sort_username: за іменем
+forms.sort_email: за ел. поштою
+Repeat Password: Підтвердіть пароль
+buttons.new_password: Відправити
+reset.password.success: Пароль змінений!
+send.message.error: Помилка при відправці!!
+Question/Answer: Питання/Відповідь
+Questions: Питання
+Sign Up: Зареєструватись
+Log Out: Вийти
+Ask Question: Задати питання
+Your Answer: Ваша відповіть
+Post Answer: Відправити
+Username: Ім'я
+Text: Текст
+Question: Питання
+Image: Зображення
+Submit: Відправити
+Log In: Авторизуватись
+Log In!: Авторизация
+Search: Пошук
+answers: відповіді
+views: перегляди
+asked by: запитав
+Email: Ел. адреса
+Password: Пароль
+Register: Реєстрація
+Confirm Password: Підтвердіть пароль
+Answers: Відповіді
+Searching results: Результати пошуку
+Delete: Видалити
+Edit: Редагувати
+No questions posted!: Немає питань!
+See question: Перегляд питань
+No answer posted!: Немає відправлених відповідей!

@@ -6,3 +6,91 @@ logout:
 
 captcha_routing:
     resource: "@CaptchaBundle/Resources/config/routing.yml"
+
+
+app_main:
+    path:       /{_locale}/
+    controller: App\Controller\MainController::index
+    requirements:
+        _locale: ru|ua|en
+
+ru:
+    path:       /ru/
+    controller: App\Controller\MainController::index
+    requirements:
+
+ua:
+    path:       /ua/
+    controller: App\Controller\MainController::index
+    requirements:
+
+
+app_question:
+    path:       /{_locale}/question/{id}/
+    controller: App\Controller\QuestionController::index
+    requirements:
+        id: '\d+'
+        _locale: ru|ua|en
+
+app_question_ask:
+    path:       /{_locale}/question/ask/
+    controller: App\Controller\QuestionController::askQuestion
+    requirements:
+        _locale: ru|ua|en
+
+question_delete:
+    path:       /{_locale}/question/{id}/delete/
+    controller: App\Controller\QuestionController::delete
+    requirements:
+        id: '\d+'
+        _locale: ru|ua|en
+
+question_edit:
+    path:       /{_locale}/question/{id}/edit/
+    controller: App\Controller\QuestionController::edit
+    requirements:
+        id: '\d+'
+        _locale: ru|ua|en
+
+question_show:
+    path:       /{_locale}/question/{id}/
+    controller: App\Controller\QuestionController::post
+    requirements:
+        id: '\d+'
+        _locale: ru|ua|en
+
+question_search:
+    path:       /{_locale}/question/search/
+    controller: App\Controller\QuestionController::search
+    requirements:
+        _locale: ru|ua|en
+
+app_register:
+    path:       /{_locale}/register/
+    controller: App\Controller\RegistrationController::register
+    requirements:
+        _locale: ru|ua|en
+
+app_login:
+    path:       /{_locale}/login/
+    controller: App\Controller\SecurityController::login
+    requirements:
+        _locale: ru|ua|en
+
+reset_email:
+    path:       /{_locale}/email/
+    controller: App\Controller\SecurityController::resetPasswordEmail
+    requirements:
+        _locale: ru|ua|en
+
+password_forget:
+    path:       /{_locale}/forget/{token}
+    controller: App\Controller\SecurityController::resetPassword
+    requirements:
+        _locale: ru|ua|en
+
+guestbook.admin.question.clone:
+    path:       /admin/app/question/list
+    controller: App\Controller\Admin\QuestionAdminController::cloneAction
+    requirements:
+

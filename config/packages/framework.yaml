@@ -17,3 +17,4 @@ framework:
 
     templating:
         engines: ['twig', 'php']
+

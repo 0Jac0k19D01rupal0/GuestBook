@@ -1,8 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Questions{% endblock %}
+{% block title %}{{ 'Questions'|trans }}{% endblock %}
 
 {% block body %}
+    {{ 'pages.sort_by' | trans }}
+    {{ knp_pagination_sortable(questions, 'forms.sort_date'|trans, 'date') }} |
+    {{ knp_pagination_sortable(questions, 'forms.sort_username'|trans, 'username') }} |
+    {{ knp_pagination_sortable(questions, 'forms.sort_email'|trans, 'email') }}
     {% for question in questions %}
         <div class="card mb-3">
             <div class="card-body bg-light">
@@ -12,24 +16,30 @@
                             <div class="col-6 text-center">
                                 {{question.answers | length}}
                                 <br>
-                                <small>answers</small>
+                                <small>{{ 'answers'|trans }}</small>
                             </div>
                             <div class="col-6 text-center">
                                 {{ question.views }}
                                 <br>
-                                <small>views</small>
+                                <small>{{ 'views'|trans }}</small>
                             </div>
                         </div>
                     </div>
                     <div class="col-10">
                         <h5 class="card-title"><a href="{{ path('app_question', { 'id': question.id }) }}">{{ question.question }}</a></h5>
-                        <p class="card-text text-muted small">asked by {{ question.user.username }}  {{ question.created|date("m/d/Y h:i a") }}</p>
+                        {% if app.user == question.user %}
+                        <a href="{{ path('question_delete', {'id': question.id}) }}">{{ 'Delete'|trans }}</a>
+                            <a href="{{ path('question_edit', {'id': question.id}) }}">{{ 'Edit'|trans }}</a>
+                        {% endif %}
+                        <p class="card-text text-muted small">{{ 'asked by'|trans }} {{ question.user.username }}  {{ question.created|date("m/d/Y h:i a") }}</p>
+                        <p class="card-text text-muted small"> {{ question.user.email }}</p>
+                        
                     </div>
                 </div>
             </div>
         </div>
     {% else %}
-        <div class="text-center alert alert-primary">No questions posted!</div>
+        <div class="text-center alert alert-primary">{{'No questions posted!'|trans}}</div>
     {% endfor %}
     <div class="navigation">
         {{ knp_pagination_render(questions) }}

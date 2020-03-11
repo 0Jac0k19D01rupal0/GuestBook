@@ -1,0 +1,5 @@
+{% extends '@SonataAdmin/standard_layout.html.twig' %}
+
+{% block sonata_admin_content %}
+<a class="btn btn-sm" href="{{ admin.generateObjectUrl('clone', object) }}">Clone</a>
+{% endblock %}
