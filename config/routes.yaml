@@ -89,8 +89,3 @@ password_forget:
     requirements:
         _locale: ru|ua|en
 
-guestbook.admin.question.clone:
-    path:       /admin/app/question/list
-    controller: App\Controller\Admin\QuestionAdminController::cloneAction
-    requirements:
-

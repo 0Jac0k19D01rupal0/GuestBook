@@ -23,6 +23,16 @@ services:
             - { name: sonata.admin, manager_type: orm, group: guest_book, label: 'Question' }
 
 
+    guestbook.admin.user:
+        class: App\Admin\UserAdmin
+        arguments:
+            - ~
+            - App\Entity\User
+            - App\Controller\Admin\UserAdminController
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: guest_book, label: 'User'}
+
+
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     App\:

@@ -63,6 +63,7 @@ class User implements UserInterface
         $this->answers = new ArrayCollection();
     }
 
+
     public function __toString(): ?string {
         return $this->username;
     }
