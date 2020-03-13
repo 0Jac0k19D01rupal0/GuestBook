@@ -4,11 +4,11 @@
     <list default="true" id="b4d199e4-de82-4356-977c-de5fe5fce979" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Admin/QuestionAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Admin/QuestionAdmin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/QuestionAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/QuestionAdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CRUD/list__action_clone.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Admin/UserAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Admin/UserAdmin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/UserAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/UserAdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Question.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Question.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -317,7 +317,9 @@
       <workItem from="1583689539466" duration="5123000" />
       <workItem from="1583772209001" duration="3868000" />
       <workItem from="1583863318904" duration="1474000" />
-      <workItem from="1583959745215" duration="8733000" />
+      <workItem from="1583959745215" duration="10621000" />
+      <workItem from="1584006825939" duration="5146000" />
+      <workItem from="1584039743783" duration="3005000" />
     </task>
     <servers />
   </component>
@@ -349,10 +351,10 @@
       <screen x="0" y="24" width="1366" height="744" />
     </state>
     <state x="147" y="41" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.24.1366.744@0.24.1366.744" timestamp="1583966944085" />
-    <state x="421" y="141" width="524" height="482" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583968515630">
+    <state x="421" y="141" width="524" height="482" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583969847856">
       <screen x="0" y="24" width="1366" height="744" />
     </state>
-    <state x="421" y="141" width="524" height="482" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.24.1366.744@0.24.1366.744" timestamp="1583968515630" />
+    <state x="421" y="141" width="524" height="482" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.24.1366.744@0.24.1366.744" timestamp="1583969847856" />
     <state x="424" y="229" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1582488471508">
       <screen x="0" y="24" width="1366" height="744" />
     </state>

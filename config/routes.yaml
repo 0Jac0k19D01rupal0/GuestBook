@@ -88,4 +88,6 @@ password_forget:
     controller: App\Controller\SecurityController::resetPassword
     requirements:
         _locale: ru|ua|en
-
+#
+#delete_user:
+#    path:

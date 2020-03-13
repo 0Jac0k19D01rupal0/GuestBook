@@ -17,7 +17,7 @@ class MainController extends AbstractController
     public function index(QuestionRepository $questionRepository, Request $request, PaginatorInterface $paginator)
     {
         $em = $this->getDoctrine()->getManager();
-        $questionsEntity = $em->getRepository(Question::class)->findBy([], ['created' => 'DESC']);
+        $questionsEntity = $em->getRepository(Question::class)->findBy(['validate'=> true], ['created' => 'DESC']);
 
         //$allAppointmentsQuery = $questionRepository->createQueryBuilder('id')
         //  ->where('id.status != :status')

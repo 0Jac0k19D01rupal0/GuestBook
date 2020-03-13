@@ -3,11 +3,13 @@
 
 namespace App\Admin;
 
+use Doctrine\ORM\Query\Expr\Select;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -42,7 +44,13 @@ final class QuestionAdmin extends AbstractAdmin
             ->add('question', null)
             ->add('body', CKEditorType::class)
             ->add('brochureFilename', FileType::class)
+            ->add('validate', ChoiceType::class, [
+                'choices' => [
+                    'Accept' => true,
+                    'Dismiss' => false
+                ]
 
+            ])
 
         ;
     }

@@ -67,6 +67,11 @@ class Question
      */
     private $brochureFilename;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $Validate = false;
+
     public function __construct()
     {
         $this->answers = new ArrayCollection();
@@ -210,6 +215,18 @@ class Question
     public function setBrochureFilename($brochureFilename)
     {
         $this->brochureFilename = $brochureFilename;
+
+        return $this;
+    }
+
+    public function getValidate(): ?bool
+    {
+        return $this->Validate;
+    }
+
+    public function setValidate(bool $Validate): self
+    {
+        $this->Validate = $Validate;
 
         return $this;
     }
