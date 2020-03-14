@@ -3,7 +3,6 @@
 
 namespace App\Admin;
 
-use Doctrine\ORM\Query\Expr\Select;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;

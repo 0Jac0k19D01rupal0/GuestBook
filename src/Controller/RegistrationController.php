@@ -12,12 +12,16 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
+//use App\Service\CodeGenerator;
+//use App\Service\Mailer;
+
+
 class RegistrationController extends AbstractController
 {
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator): Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator, \Swift_Mailer $mailer): Response
     {
         if($this->isGranted("IS_AUTHENTICATED_FULLY"))
         {
@@ -27,32 +31,99 @@ class RegistrationController extends AbstractController
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
+        $result = null;
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
-            $user->setPassword(
-                $passwordEncoder->encodePassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
-
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+            // encode the plain password
+            $find_email = $entityManager->getRepository(User::class)->findOneBy(['email' => $form->get('email')->getData()]);
+            $find_username = $entityManager->getRepository(User::class)->findOneBy(['username' => $form->get('username')->getData()]);
+            if (is_null($find_email) && is_null($find_username)) {
+                $user->setPassword(
+                    $passwordEncoder->encodePassword(
+                        $user,
+                        $form->get('plainPassword')->getData()
+                    )
+                );
+                $user->setResetPasswordToken(md5(random_bytes(10)));
+                $user->setEnabled(false);
+                $user->setRoles(['ROLE_EDITOR']);
 
-            // do anything else you need here, like send an email
+                $entityManager->persist($user);
+                $entityManager->flush();
 
-            return $guardHandler->authenticateUserAndHandleSuccess(
-                $user,
-                $request,
-                $authenticator,
-                'main' // firewall name in security.yaml
-            );
+                $link = getenv('DOMAIN').'/ua/confirm_email/'.$user->getResetPasswordToken();
+
+                $message = (new \Swift_Message('Hello Email'))
+                    ->setFrom('oleksandr9.redko@gmail.com')
+                    ->setTo($user->getEmail())
+                    ->setBody(
+                        $this->renderView(
+                        // templates/emails/registration.html.twig
+                            'security/confirmation.html.twig',
+                            [
+                                'name' => $user->getUsername(),
+                                'link' => $link,
+                            ]),
+
+                        'text/html'
+                    );
+                $mailer->send($message);
+
+                $resetPasswordStatus = 'send.message.success';
+
+
+                return $guardHandler->authenticateUserAndHandleSuccess(
+                    $user,
+                    $request,
+                    $authenticator,
+                    'main' // firewall name in security.yaml
+                );
+            }
+            else {
+                if (is_null($find_email)) {
+                    return $this->render('security/errorToken.html.twig');
+                }
+                if (is_null($find_username)) {
+                    return $this->render('security/errorToken.html.twig');
+                }
+
+            }
         }
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+            'result'=>$result
         ]);
     }
+
+
+    public function confirmEmail($token, Request $request)
+    {
+
+        $em =$this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)->findOneBy(['resetPasswordToken' => $token]);
+
+        if ($user->getEnabled() == false ) {
+
+            $user->setRoles(['ROLE_USER']);
+            $user->setEnabled(true);
+
+
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+            $result = 'pages.confirm_email_success';
+        }
+
+
+        else
+        {
+            return new Response('404');
+        }
+
+        return $this->render('security/account_confirm.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
 }

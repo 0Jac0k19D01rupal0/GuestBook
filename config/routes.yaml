@@ -88,6 +88,9 @@ password_forget:
     controller: App\Controller\SecurityController::resetPassword
     requirements:
         _locale: ru|ua|en
-#
-#delete_user:
-#    path:
+
+confirm_email:
+    path:       /{_locale}/confirm_email/{token}
+    controller: App\Controller\RegistrationController::confirmEmail
+    requirements:
+        _locale: ru|ua|en
