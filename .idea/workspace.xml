@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4d199e4-de82-4356-977c-de5fe5fce979" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/security/account_confirm.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/security/confirmation.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Admin/QuestionAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Admin/QuestionAdmin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/UserAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/UserAdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Admin/UserAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Admin/UserAdmin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -327,7 +319,9 @@
       <workItem from="1584039743783" duration="3309000" />
       <workItem from="1584093718478" duration="7378000" />
       <workItem from="1584151384616" duration="2389000" />
-      <workItem from="1584183608634" duration="15916000" />
+      <workItem from="1584183608634" duration="17464000" />
+      <workItem from="1584269477138" duration="156000" />
+      <workItem from="1584269715556" duration="4695000" />
     </task>
     <servers />
   </component>
@@ -371,10 +365,10 @@
       <screen x="0" y="24" width="1366" height="744" />
     </state>
     <state x="421" y="299" key="ComposerInitDialogKey/0.24.1366.744@0.24.1366.744" timestamp="1580520860121" />
-    <state x="213" y="240" width="465" height="371" key="NewPhpClassDialog" timestamp="1584099047919">
+    <state x="213" y="240" width="465" height="371" key="NewPhpClassDialog" timestamp="1584210071128">
       <screen x="0" y="24" width="1366" height="744" />
     </state>
-    <state x="213" y="240" width="465" height="371" key="NewPhpClassDialog/0.24.1366.744@0.24.1366.744" timestamp="1584099047919" />
+    <state x="213" y="240" width="465" height="371" key="NewPhpClassDialog/0.24.1366.744@0.24.1366.744" timestamp="1584210071128" />
     <state x="490" y="317" width="399" height="147" key="NewPhpFileDialog" timestamp="1584098561401">
       <screen x="0" y="24" width="1366" height="744" />
     </state>
@@ -395,10 +389,10 @@
       <screen x="0" y="24" width="1366" height="744" />
     </state>
     <state x="539" y="24" width="827" height="692" key="dock-window-1/0.24.1366.744@0.24.1366.744" timestamp="1580328909105" />
-    <state x="328" y="93" width="709" height="578" key="find.popup" timestamp="1583409086398">
+    <state x="328" y="93" width="709" height="578" key="find.popup" timestamp="1584270448534">
       <screen x="0" y="24" width="1366" height="744" />
     </state>
-    <state x="328" y="93" width="709" height="578" key="find.popup/0.24.1366.744@0.24.1366.744" timestamp="1583409086398" />
+    <state x="328" y="93" width="709" height="578" key="find.popup/0.24.1366.744@0.24.1366.744" timestamp="1584270448534" />
     <state x="350" y="183" key="run.anything.popup" timestamp="1584151457506">
       <screen x="0" y="24" width="1366" height="744" />
     </state>

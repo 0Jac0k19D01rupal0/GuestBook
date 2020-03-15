@@ -21,7 +21,6 @@ final class UserAdmin extends AbstractAdmin
             ->add('email')
             ->add('_action', null,   [
                 'actions' => [
-                    'show' => [],
                     'edit' => [],
                     'delete' => [],
                 ],
