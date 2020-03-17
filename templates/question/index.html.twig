@@ -17,6 +17,9 @@
                 <div class = "card-footer small-muted small">
                     {{ question.created|date }}
 
+                    {% if question.picture != null %}
+                        <img src="{{ picture_directory }}/{{ question.picture }}" class="img-fluid rounded" alt="Image">
+                    {% endif %}
                 </div>
             </div>
         </div>

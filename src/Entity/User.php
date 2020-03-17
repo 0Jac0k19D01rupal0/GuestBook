@@ -61,7 +61,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="boolean")
      */
-    private $enabled = null;
+    private $enabled = false;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -149,8 +149,6 @@ class User implements UserInterface
      */
     public function eraseCredentials()
     {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
     }
 
     /**

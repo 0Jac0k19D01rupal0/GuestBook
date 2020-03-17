@@ -20,6 +20,9 @@ class Question
     private $id;
 
     /**
+     * @Assert\Length(
+     *     min = 10,
+     *)
      * @ORM\Column(type="string", length=255)
      */
     private $question;
@@ -41,6 +44,9 @@ class Question
     private $username;
 
     /**
+     * @Assert\Length(
+     *     min = 15,
+     *)
      * @ORM\Column(type="text", nullable=true)
      */
     private $body;
@@ -63,9 +69,14 @@ class Question
     private $answers;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @Assert\File(
+     *     maxSize = "1024k",
+     *     mimeTypes={"image/jpeg", "image/gif", "image/png", "image/tiff", "image/web",},
+     *     mimeTypesMessage="Please upload image in format .png, .jpeg, .tiff, .webp"
+     * )
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $brochureFilename;
+    private $picture;
 
     /**
      * @ORM\Column(type="boolean")
@@ -198,7 +209,7 @@ class Question
     {
         if ($this->answers->contains($answer)) {
             $this->answers->removeElement($answer);
-            // set the owning side to null (unless already changed)
+
             if ($answer->getQuestion() === $this) {
                 $answer->setQuestion(null);
             }
@@ -207,14 +218,14 @@ class Question
         return $this;
     }
 
-    public function getBrochureFilename()
+    public function getPicture(): ?string
     {
-        return $this->brochureFilename;
+        return $this->picture;
     }
 
-    public function setBrochureFilename($brochureFilename)
+    public function setPicture(?string $picture): self
     {
-        $this->brochureFilename = $brochureFilename;
+        $this->picture = $picture;
 
         return $this;
     }
@@ -230,4 +241,8 @@ class Question
 
         return $this;
     }
+
+
+
+
 }

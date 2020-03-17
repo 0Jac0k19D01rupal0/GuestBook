@@ -21,9 +21,7 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute("app_main");
         }
 
-        // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
@@ -51,8 +49,9 @@ class SecurityController extends AbstractController
                 $user->setResetPasswordToken(md5(random_bytes(10)));
                 $em->persist($user);
                 $em->flush();
-                // Send Email дописати
-                /////////////////
+
+                //Send Email//
+                //////////////
                 $link = getenv('DOMAIN').'/ua/forget/'.$user->getResetPasswordToken();
 
                 $message = (new \Swift_Message('Hello Email'))
@@ -60,7 +59,6 @@ class SecurityController extends AbstractController
                     ->setTo($user->getEmail())
                     ->setBody(
                         $this->renderView(
-                        // templates/emails/registration.html.twig
                             'security/sendEmail.html.twig',
                         [
                             'name' => $user->getUsername(),
@@ -73,7 +71,7 @@ class SecurityController extends AbstractController
 
                 $resetPasswordStatus = 'send.message.success';
             }
-            //// дописати else що буде казати що емаил не знайдено
+
             else {
                 return $this->render('security/errorToken.html.twig');
             }
@@ -112,7 +110,7 @@ class SecurityController extends AbstractController
                 $user->setResetPasswordToken(null);
                 $em->persist($user);
                 $em->flush();
-                $displayForm='reset.password.success';
+                $displayForm ='reset.password.success';
             }
 
         }

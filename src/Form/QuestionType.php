@@ -42,19 +42,9 @@ class QuestionType extends AbstractType
             ])
             ->add('picture', FileType::class, [
                 'label' => 'Image',
-                'mapped' => false,
+                'attr' => ['class' => 'form-control'],
+                'data'=> $options['picture'] ?? null,
                 'required' => false,
-                'constraints' => [
-                    new File([
-                        'maxSize' => '5024m',
-                        'mimeTypes' => [
-                            'image/jpeg',
-                            'image/png',
-                            'image/jpg'
-                        ],
-                        'mimeTypesMessage' => 'Please upload a valid image(jpeg, png, jpg)',
-                    ])
-                ],
             ])
 //            ->add('captchaCode', CaptchaType::class, array(
 //                'captchaConfig' => 'ExampleCaptchaUserRegistration',

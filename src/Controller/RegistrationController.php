@@ -18,9 +18,6 @@ use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
 class RegistrationController extends AbstractController
 {
-    /**
-     * @Route("/register", name="app_register")
-     */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator, \Swift_Mailer $mailer): Response
     {
         if($this->isGranted("IS_AUTHENTICATED_FULLY"))
@@ -46,7 +43,6 @@ class RegistrationController extends AbstractController
                     )
                 );
                 $user->setResetPasswordToken(md5(random_bytes(10)));
-                $user->setEnabled(false);
                 $user->setRoles(['ROLE_EDITOR']);
 
                 $entityManager->persist($user);
@@ -59,7 +55,6 @@ class RegistrationController extends AbstractController
                     ->setTo($user->getEmail())
                     ->setBody(
                         $this->renderView(
-                        // templates/emails/registration.html.twig
                             'security/confirmation.html.twig',
                             [
                                 'name' => $user->getUsername(),
@@ -104,17 +99,17 @@ class RegistrationController extends AbstractController
         $em =$this->getDoctrine()->getManager();
         $user = $em->getRepository(User::class)->findOneBy(['resetPasswordToken' => $token]);
 
-        if ($user->getEnabled() == false ) {
+        if ($user->getRoles('ROLE_EDITOR')) {
 
             $user->setRoles(['ROLE_USER']);
             $user->setEnabled(true);
 
 
+
             $em = $this->getDoctrine()->getManager();
             $em->flush();
-            $result = 'pages.confirm_email_success';
+           
         }
-
 
         else
         {

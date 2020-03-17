@@ -30,7 +30,7 @@ class UserAdminController extends CRUDController
     public function batchActionDelete(ProxyQueryInterface $query)
     {
         $request       = $this->getRequest();
-        $currentUserId = $this->getUser(); // ID of the current user
+        $currentUserId = $this->getUser();
         $selectedUsers = $query->execute();
 
         foreach ($selectedUsers as $selectedUser) {

@@ -41,6 +41,7 @@ class AppFixtures extends Fixture
 
             $password = $this->encoder->encodePassword($user, 'pass_1234');
             $user->setPassword($password);
+            $user->setEnabled(true);
             $user->setEmail($this->faker->email);
             $manager->persist($user);
         }
@@ -58,6 +59,7 @@ class AppFixtures extends Fixture
             $question->setEmail($user->getEmail());
             $question->setUsername($user->getUsername());
             $question->setUser($user);
+            $question->setValidate(true);
             $manager->persist($question);
         }
         $manager->flush();

@@ -7,9 +7,7 @@ use App\Form\QuestionType;
 use App\Entity\Answer;
 use App\Form\AnswerType;
 use App\Repository\QuestionRepository;
-use App\Service\FileUploader;
-use Doctrine\ORM\Mapping\Id;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -27,9 +25,6 @@ class QuestionController extends AbstractController
         $this->QuestionRepository = $QuestionRepository;
     }
 
-    /**
-     * @Route("/question/{id}", name="app_question", requirements={"id"="\d+"})
-     */
     public function index(Question $question, Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
@@ -54,16 +49,14 @@ class QuestionController extends AbstractController
         $entityManager->flush();
         return $this->render('question/index.html.twig', [
             'question' => $question,
-            'answerForm' => $renderedForm
+            'answerForm' => $renderedForm,
+            'picture_directory' => $this->getParameter('picture_path')
         ]);
     }
 
 
-    /**
-     * @Route("/question/ask", name="app_question_ask")
-     * @IsGranted("IS_AUTHENTICATED_FULLY")
-     */
-    public function askQuestion(Request $request, FileUploader $fileUploader)
+
+    public function askQuestion(Request $request)
     {
         $question = new Question();
         $form = $this->createForm(QuestionType::class, $question, [
@@ -74,18 +67,18 @@ class QuestionController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
         {
-            /** @var UploadedFile $brochureFile */
-            $brochureFile = $form['picture']->getData();
-
-            if ($brochureFile) {
-                $brochureFileName = $fileUploader->upload($brochureFile);
-                $question->setBrochureFilename($brochureFileName);
-
+            $file = $form->get('picture')->getData();
+            if ($file) {
+                $filename = md5(uniqid()) . '.' . $file->guessExtension();
+                $file->move(
+                    $this->getParameter('picture_directory'), $filename
+                );
+                $question->setPicture($filename);
             }
+
             $question = $form->getData();
             $question->setUser($this->getUser() ?? null);
             $question->setCreated(new \DateTime());
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($question);
             $entityManager->flush();
@@ -93,14 +86,12 @@ class QuestionController extends AbstractController
         }
 
         return $this->render('question/ask.html.twig', [
-            'questionForm' => $form->createView()
+            'questionForm' => $form->createView(),
+            'picture_directory' => $this->getParameter('picture_path')
+
         ]);
     }
 
-
-    /**
-     * @Route("/question/{id}/delete", name="question_delete", requirements={"id":"\d+"})
-     */
     public function delete(Question $question)
     {
         $entityManager = $this->getDoctrine()->getManager();
@@ -110,37 +101,49 @@ class QuestionController extends AbstractController
         return $this->redirectToRoute('app_main');
     }
 
-    /**
-     * @Route("/question/{id}/edit", name="question_edit", requirements={"id":"\d+"})
-     */
     public function edit(Question $question, Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $form = $this->createForm(QuestionType::class, $question, [
-            'user' => $this->getUser(),
-            'picture' => null
-        ]);
 
-        $form-> handleRequest($request);
+            $picture = $this->getParameter('picture_directory') . '/' . $question->getPicture();
+            if (is_file($picture)) {
+                $picture = new File($picture);
+            } else {
+                $picture = null;
+            }
 
-        if ($form->isSubmitted() && $form->isValid()){
-            $question = $form->getData();
-            $question->setUser($this->getUser() ?? null);
-            $question->setCreated(new \DateTime());
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($question);
-            $entityManager->flush();
+            $form = $this->createForm(QuestionType::class, $question, [
+                'user' => $this->getUser(),
+                'picture' => $picture
+            ]);
 
-            return $this->redirectToRoute("app_question", ['id' => $question->getId()]);
-        }
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $question = $form->getData();
+                $file = $form->get('picture')->getData();
+                if ($file) {
+                    $filename = md5(uniqid()) . '.' . $file->guessExtension();
+                    $file->move(
+                        $this->getParameter('picture_directory'), $filename
+                    );
+                    $question->setPicture($filename);
+
+                    $question->setUser($this->getUser() ?? null);
+                    $question->setCreated(new \DateTime());
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $entityManager->persist($question);
+                    $entityManager->flush();
+
+                    return $this->redirectToRoute("app_question", ['id' => $question->getId()]);
+                }
+            }
         return $this->render('question/ask.html.twig', [
-            'questionForm' => $form->createView()
+            'questionForm' => $form->createView(),
+            'picture_directory' => $this->getParameter('picture_directory')
         ]);
     }
 
-    /**
-     * @Route("/question/{id}", name="question_show", requirements={"id":"\d+"})
-     */
     public function post(Question $question)
     {
         return $this->render('question/show.html.twig', [
@@ -148,9 +151,6 @@ class QuestionController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/question/search", name="question_search")
-     */
     public function search(Request $request)
     {
         $query = $request->query->get('q');

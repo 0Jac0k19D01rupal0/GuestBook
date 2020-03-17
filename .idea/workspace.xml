@@ -2,9 +2,46 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4d199e4-de82-4356-977c-de5fe5fce979" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/security/log_out_admin.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes/sonata_admin.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes/sonata_admin.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Admin/QuestionAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Admin/QuestionAdmin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Admin/UserAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Admin/UserAdmin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/QuestionAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/QuestionAdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/UserAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/UserAdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/QuestionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/QuestionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Question.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Question.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/QuestionType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/QuestionType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200221165950.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200312193105.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200313103400.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200313104202.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200313104554.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200313104557.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200313104933.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200313105354.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200313105357.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200313105604.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200313105608.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200313105909.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200313105914.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/FileUploader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/question/ask.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/question/ask.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/question/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/question/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/question/query_question.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/question/query_question.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/account_confirm.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/account_confirm.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/sendEmail.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/sendEmail.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translations/messages.en.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/translations/messages.en.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translations/messages.ru.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/translations/messages.ru.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translations/messages.ua.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/translations/messages.ua.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -321,7 +358,12 @@
       <workItem from="1584151384616" duration="2389000" />
       <workItem from="1584183608634" duration="17464000" />
       <workItem from="1584269477138" duration="156000" />
-      <workItem from="1584269715556" duration="4695000" />
+      <workItem from="1584269715556" duration="13624000" />
+      <workItem from="1584346167312" duration="7483000" />
+      <workItem from="1584362300718" duration="4224000" />
+      <workItem from="1584381203160" duration="14081000" />
+      <workItem from="1584435278409" duration="4243000" />
+      <workItem from="1584442844362" duration="7561000" />
     </task>
     <servers />
   </component>
