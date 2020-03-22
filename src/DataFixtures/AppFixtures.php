@@ -50,7 +50,7 @@ class AppFixtures extends Fixture
 
     public function loadPosts($manager, $users)
     {
-        for ($i = 1; $i < 10; $i++) {
+        for ($i = 1; $i < 51; $i++) {
             $user = $users[rand(0,1)];
             $question = new Question();
             $question->setQuestion($this->faker->text(30));

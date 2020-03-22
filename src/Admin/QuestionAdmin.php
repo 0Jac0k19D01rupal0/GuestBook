@@ -39,7 +39,6 @@ final class QuestionAdmin extends AbstractAdmin
             ->add('email', EmailType::class)
             ->add('question', null)
             ->add('body', CKEditorType::class)
-//            ->add('brochureFilename', FileType::class, array('data_class' => null))
             ->add('validate', ChoiceType::class, [
                 'choices' => [
                     'Accept' => true,
@@ -47,9 +46,7 @@ final class QuestionAdmin extends AbstractAdmin
                 ]
 
 
-            ])
-
-        ;
+            ]);
     }
 
     protected function configureShowFields(ShowMapper $showMapper)
@@ -57,7 +54,6 @@ final class QuestionAdmin extends AbstractAdmin
         $showMapper
             ->add('question')
             ->add('body')
-            /*->add('brochureFilename')*/
             ->add('username')
             ->add('email')
         ;

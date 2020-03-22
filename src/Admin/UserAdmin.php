@@ -19,9 +19,9 @@ final class UserAdmin extends AbstractAdmin
     /**
      * @Route("/admin/logout", name="admin_logout")
      */
-    public function logoutAction(): void
+    public function logoutAction()
     {
-        // Left empty intentionally because this will be handled by Symfony.
+        
     }
 
     protected function configureListFields(ListMapper $listMapper)
@@ -43,17 +43,8 @@ final class UserAdmin extends AbstractAdmin
             ->add('username', TextType::class)
             ->add('email', EmailType::class)
             ->end()
-            ->with('Password')
-                ->add('password', RepeatedType::class)
-            ->end()
-            ->with('User status')
-            ->add('enabled', ChoiceType::class, [
-                'choices' => [
-                    'Accepted' => true,
-                    'Blocked' => false
-                ]
-
-            ])
+                       
+            
 
         ;
     }

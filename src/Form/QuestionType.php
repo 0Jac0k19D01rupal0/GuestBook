@@ -46,14 +46,14 @@ class QuestionType extends AbstractType
                 'data'=> $options['picture'] ?? null,
                 'required' => false,
             ])
-//            ->add('captchaCode', CaptchaType::class, array(
-//                'captchaConfig' => 'ExampleCaptchaUserRegistration',
-//                'constraints' => [
-//                    new ValidCaptcha([
-//                        'message' => 'Invalid captcha, please try again',
-//                    ]),
-//                ],
-//            ))
+             ->add('captchaCode', CaptchaType::class, array(
+                  'captchaConfig' => 'ExampleCaptchaUserRegistration',
+                  'constraints' => [
+                      new ValidCaptcha([
+                          'message' => 'Invalid captcha, please try again',
+                      ]),
+                  ],
+              ))
             ->add('submit', SubmitType::class, [
                 'label' => "Ask Question"
             ]);
