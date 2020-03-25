@@ -59,6 +59,7 @@ class AppFixtures extends Fixture
             $question->setEmail($user->getEmail());
             $question->setUsername($user->getUsername());
             $question->setUser($user);
+            $question->setPicture('fixtures/'.rand(1, 8).'.jpg');
             $question->setValidate(true);
             $manager->persist($question);
         }

@@ -12,8 +12,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
-//use App\Service\CodeGenerator;
-//use App\Service\Mailer;
 
 
 class RegistrationController extends AbstractController
@@ -48,7 +46,8 @@ class RegistrationController extends AbstractController
                 $entityManager->persist($user);
                 $entityManager->flush();
 
-                $link = getenv('DOMAIN').'/ua/confirm_email/'.$user->getResetPasswordToken();
+
+                $link = $_SERVER['SERVER_NAME'].'/ua/confirm_email/'.$user->getResetPasswordToken();
 
                 $message = (new \Swift_Message('Hello Email'))
                     ->setFrom('oleksandr9.redko@gmail.com')

@@ -52,7 +52,8 @@ class SecurityController extends AbstractController
 
                 //Send Email//
                 //////////////
-                $link = getenv('DOMAIN').'/ua/forget/'.$user->getResetPasswordToken();
+
+                $link = $_SERVER['SERVER_NAME'].'/ua/forget/'.$user->getResetPasswordToken();
 
                 $message = (new \Swift_Message('Hello Email'))
                     ->setFrom('oleksandr9.redko@gmail.com')
