@@ -26,7 +26,7 @@ This app allows users to leave messages on the site.
     # For a generic SMTP server, use: "smtp://localhost:25?encryption=&auth_mode="
     MAILER_URL=gmail://gmail_username:gmail_password@localhost
     ```
-4. Installing composer packages `composer install --no-dev --optimize-autoloader` and updating `composer update`
+4. Installing composer packages `composer install`
 5. Clearing cache `php bin/console cache:clear --env=prod --no-debug`
 6. Install CKEditor Bundle `php bin/console ckeditor:install`
 7. Install the Assets `php bin/console assets:install public`
