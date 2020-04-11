@@ -32,8 +32,8 @@ This app allows users to leave messages on the site.
 7. Install the Assets `php bin/console assets:install public`
 8. Configure database:
     1. Create base `php bin/console doctrine:database:create`
-    2. Make migrations `php bin/console make:migrations` and migrate `php bin/console doctrine:migrations:migrate`
-9. Add permissoins `chmod 777 public/uploads/pictures``
+    2. Make migrate `php bin/console doctrine:migrations:migrate`
+9. Add permissoins `chmod 777 public/uploads/pictures`
 10. Go to your site
 
 
