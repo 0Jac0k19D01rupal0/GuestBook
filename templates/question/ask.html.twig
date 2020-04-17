@@ -5,7 +5,11 @@
     <div class="row">
         <div class="col-8 offset-2">
 
-            {{ form(questionForm) }}
+             {% if question.picture != null %}
+            <img src="{{ picture_directory }}/{{ question.picture }}" class="img=fluid rounded" alt="Image">
+            {% endif %}
+            {{ form(form) }}
+                       
 
         </div>
     </div>
