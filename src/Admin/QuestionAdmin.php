@@ -26,6 +26,7 @@ final class QuestionAdmin extends AbstractAdmin
             ->addIdentifier('question', null)
             ->add('user', null)
             ->add('body', null)
+	    ->add('created', null)
             ->add('_action', null,   [
                 'actions' => [
                     'show' => ['question_show'],
