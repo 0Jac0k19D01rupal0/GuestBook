@@ -69,12 +69,14 @@ class Question
     private $answers;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
      * @Assert\File(
      *     maxSize = "1024k",
      *     mimeTypes={"image/jpeg", "image/gif", "image/png", "image/tiff", "image/web",},
      *     mimeTypesMessage="Please upload image in format .png, .jpeg, .tiff, .webp"
      * )
-     * @ORM\Column(type="string", length=255, nullable=true)
+     *
      */
     private $picture;
 
@@ -218,16 +220,18 @@ class Question
         return $this;
     }
 
-    public function getPicture(): ?string
+    public function getPicture()
     {
         return $this->picture;
     }
 
-    public function setPicture(?string $picture): self
+    public function setPicture($picture)
     {
+    	
+    	
         $this->picture = $picture;
-
         return $this;
+       
     }
 
     public function getValidate(): ?bool
