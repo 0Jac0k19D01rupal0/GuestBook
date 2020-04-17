@@ -3,6 +3,7 @@
 
 namespace App\Admin;
 
+
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -11,6 +12,8 @@ use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\HttpFoundation\File\File;
+
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 
@@ -56,6 +59,7 @@ final class QuestionAdmin extends AbstractAdmin
             ->add('body')
             ->add('username')
             ->add('email')
+	   
         ;
     }
 
