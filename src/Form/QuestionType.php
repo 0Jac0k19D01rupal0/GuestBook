@@ -43,8 +43,8 @@ class QuestionType extends AbstractType
             ->add('picture', FileType::class, [
                 'label' => 'Image',
                 'attr' => ['class' => 'form-control'],
-                'data'=> $options['picture'] ?? null,
-                'required' => false,
+                'data'=> $options['picture'],
+                'required' => false
             ])
              ->add('captchaCode', CaptchaType::class, array(
                   'captchaConfig' => 'ExampleCaptchaUserRegistration',
@@ -66,6 +66,8 @@ class QuestionType extends AbstractType
         $resolver->setDefaults([
             'data_class'=> Question::class
         ]);
-        $resolver->setRequired(['user', 'picture']);
+        $resolver->setRequired(['user',
+         'picture'
+         ]);
     }
 }
