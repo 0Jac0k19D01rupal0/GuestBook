@@ -13,6 +13,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\UploadedFile;
+use Symfony\Component\HttpFoundation\Exception\FileException;
 
 class QuestionController extends AbstractController
 {
@@ -63,15 +66,13 @@ class QuestionController extends AbstractController
             'user' => $this->getUser(),
             'picture' => null
         ]);
-        //dd($request);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
         {
             $file = $form->get('picture')->getData();
             if ($file) {
                 $filename = md5(uniqid()) . '.' . $file->guessExtension();
-                $file->move(
-                    $this->getParameter('picture_directory'), $filename
+                $file->move($this->getParameter('picture_directory'), $filename
                 );
                 $question->setPicture($filename);
             }
@@ -86,7 +87,8 @@ class QuestionController extends AbstractController
         }
 
         return $this->render('question/ask.html.twig', [
-            'questionForm' => $form->createView(),
+            'form' => $form->createView(),
+            'question' => $question,
             'picture_directory' => $this->getParameter('picture_path')
 
         ]);
@@ -103,46 +105,53 @@ class QuestionController extends AbstractController
 
     public function edit(Question $question, Request $request)
     {
-        $entityManager = $this->getDoctrine()->getManager();
-
-            $picture = $this->getParameter('picture_directory') . '/' . $question->getPicture();
-            if (is_file($picture)) {
-                $picture = new File($picture);
-            } else {
-                $picture = null;
+         $picture = $this->getParameter('picture_directory').'/'.$question->getPicture();
+         
+           if (is_file($picture))
+            {
+            $picture = new File($picture);
+            } 
+            
+            else
+           {
+        	$picture = null;        
             }
-
+      	   	
             $form = $this->createForm(QuestionType::class, $question, [
                 'user' => $this->getUser(),
-                'picture' => $picture
-            ]);
-
+				'picture' => $picture
+				]);
+						
             $form->handleRequest($request);
+            	
 
             if ($form->isSubmitted() && $form->isValid()) {
-                $question = $form->getData();
-                $file = $form->get('picture')->getData();
-                if ($file) {
-                    $filename = md5(uniqid()) . '.' . $file->guessExtension();
-                    $file->move(
-                        $this->getParameter('picture_directory'), $filename
-                    );
-                    $question->setPicture($filename);
-
+      		        $question = $form->getData();
                     $question->setUser($this->getUser() ?? null);
                     $question->setCreated(new \DateTime());
+
+                    	 $file = $form->get('picture')->getData();         
+ 
+                if (!is_null($file)) {
+                  $fileResult = $this->uploadFile($file); 
+                   $question->setPicture($fileResult);
+                 }
+            
                     $entityManager = $this->getDoctrine()->getManager();
                     $entityManager->persist($question);
                     $entityManager->flush();
 
                     return $this->redirectToRoute("app_question", ['id' => $question->getId()]);
-                }
+                
             }
         return $this->render('question/ask.html.twig', [
-            'questionForm' => $form->createView(),
-            'picture_directory' => $this->getParameter('picture_directory')
+        	'question' => $question,
+            'form' => $form->createView(),
+            'picture_directory' => $this->getParameter('picture_path')
         ]);
     }
+
+     
 
     public function post(Question $question)
     {
@@ -161,7 +170,14 @@ class QuestionController extends AbstractController
         ]);
     }
 
-
+    public function uploadFile($file)
+    {
+        $filename = md5(uniqid()) . '.' . $file->guessExtension();
+           $file->move(
+           $this->getParameter('picture_directory'), $filename
+             );
+               return $filename;
+    }
 
 
 }
